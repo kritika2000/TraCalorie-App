@@ -54,6 +54,48 @@
           <div class="bar-progress"></div>
         </div>
       </section>
+      <div class="meal-workout-container">
+        <section class="meal">
+          <div class="filter-container">
+            <input type="text" name="filter" placeholder="Filter Meals..." />
+          </div>
+          <div class="meal-header-container">
+            <h1>Meal / Food Items</h1>
+            <button><i class="fas fa-solid fa-plus"></i> Add Meal</button>
+          </div>
+          <div class="add-meal-form-container">
+            <form>
+              <input type="text" name="meal" placeholder="Enter Meal or Item" />
+              <input
+                type="number"
+                name="calories"
+                placeholder="Enter Calories"
+                min="0"
+              />
+              <button type="submit">Add Meal Item</button>
+            </form>
+          </div>
+          <div class="meal-list-container">
+            <ul class="meal-list">
+              <li class="meal-item">
+                <p class="meal">Lunch</p>
+                <p class="calorie">500</p>
+                <button class="meal-item-remove-btn">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </li>
+              <li class="meal-item">
+                <p class="meal">Breakfast</p>
+                <p class="calorie">700</p>
+                <button class="meal-item-remove-btn">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="workout"></section>
+      </div>
     </main>
   </body>
 </html>

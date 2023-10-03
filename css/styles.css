@@ -4,10 +4,20 @@
   --color-dashboard-bg1: #212529;
   --color-dashboard-bg2: #e9ecef;
   --color-dashboard-bg3: #599f3d;
+  --color-form-bg: #e9ecef;
+  --color-meal: #599f3d;
+  --color-meal-light: #73bc56;
+  --color-workout: #fd7e14;
+  --color-workout-light: #f99c4f;
   --btn-border: 1px solid #fff;
+  --btn-border-radius: 5px;
   --color-progress-bar: #e9ecef;
   --color-bar-progress: #599f3d;
-  --btn-border-radius: 5px;
+  --input-border: 1px solid #e4e5e6;
+  --input-border-radius: 4px;
+  --input-outline: 2px solid #b9e3a5;
+  --list-item-border: 1px solid #e4e5e6;
+  --list-item-border-radius: 3px;
 }
 
 /* CSS Reset */
@@ -131,6 +141,135 @@ body {
   background-color: var(--color-bar-progress);
   border-radius: 5px;
 }
+
+/*************************** Meal Workout Styles ***************************/
+
+.meal-workout-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Meal Styles */
+section.meal {
+  display: grid;
+  gap: 1em;
+}
+
+.filter-container input {
+  width: 100%;
+  height: 30px;
+  text-indent: 0.3em;
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+}
+
+:is(.add-meal-form-container form input, .filter-container input):focus {
+  outline: var(--input-outline);
+  border: none;
+}
+
+.filter-container input,
+.add-meal-form-container form input {
+  box-sizing: border-box;
+}
+
+.meal-header-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  height: 60px;
+}
+
+.meal-header-container button {
+  margin-left: auto;
+  background-color: var(--color-meal);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  color: #fff;
+  padding: 0.7em;
+}
+
+.meal-header-container button:hover {
+  background-color: var(--color-meal-light);
+}
+
+.meal-header-container::before {
+  content: '';
+  display: inline-block;
+  align-self: stretch;
+  width: 5px;
+  background-color: var(--color-meal);
+}
+
+.add-meal-form-container {
+  background-color: var(--color-form-bg);
+  padding: 1em;
+  border-radius: 3px;
+  height: fit-content;
+}
+
+.add-meal-form-container form {
+  display: grid;
+  gap: 0.5em;
+}
+
+.add-meal-form-container form input {
+  height: 30px;
+  text-indent: 0.3em;
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+}
+
+.add-meal-form-container form button {
+  justify-self: self-start;
+  background-color: var(--color-meal);
+  border: none;
+  border-radius: var(--btn-border-radius);
+  color: #fff;
+  padding: 0.6em;
+}
+
+.add-meal-form-container form button:hover {
+  background-color: var(--color-meal-light);
+}
+
+.meal-list {
+  list-style-type: none;
+  display: grid;
+  grid-auto-rows: 60px;
+  gap: 0.5em;
+}
+
+.meal-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: var(--list-item-border);
+  border-radius: var(--list-item-border-radius);
+  align-items: center;
+  padding-inline: 1em;
+}
+
+.meal-item .calorie {
+  justify-self: center;
+  background-color: #599f3d;
+  color: #fff;
+  padding: 0.5em 0.8em;
+  border-radius: 5px;
+}
+
+.meal-item .meal-item-remove-btn {
+  justify-self: end;
+  background-color: red;
+  border: none;
+  padding: 0.4em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+}
+
+/* Workout Styles */
 
 /*************************** Media Queries ***************************/
 
