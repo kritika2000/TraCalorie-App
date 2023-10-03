@@ -1,0 +1,54 @@
+:root {
+  --color-primary: #599f3d;
+  --color-secondary: #fd7e14;
+  --color-bg: #212529;
+  --btn-border: 1px solid #fff;
+  --btn-border-radius: 5px;
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+/*************************** Header Styles *****************************/
+
+.header {
+  background-color: var(--color-primary);
+  height: 70px;
+  padding-inline: 1em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.set-daily-limit-btn,
+.reset-day-btn {
+  background-color: var(--color-primary);
+  padding: 0.7em;
+  border: var(--btn-border);
+  border-radius: var(--btn-border-radius);
+  color: #fff;
+}
+
+.set-daily-limit-btn {
+  margin-left: auto;
+}
+
+:is(.set-daily-limit-btn, .reset-day-btn):hover {
+  color: #212529;
+  background-color: #fff;
+}
+
+.icon i {
+  font-size: 2em;
+}
