@@ -116,12 +116,6 @@ body {
 /******************************* Media Queries *******************************/
 
 @media (max-width: 600px) {
-  /* .calorie-limit {
-    grid-column: 1 / 4;
-  }
-  .gain-loss {
-    grid-column: 1 / 4;
-  } */
   .calories-consumed {
     grid-column: 1 / 4;
   }
