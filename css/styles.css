@@ -1,7 +1,9 @@
 :root {
   --color-primary: #599f3d;
   --color-secondary: #fd7e14;
-  --color-bg: #212529;
+  --color-dashboard-bg1: #212529;
+  --color-dashboard-bg2: #e9ecef;
+  --color-dashboard-bg3: #599f3d;
   --btn-border: 1px solid #fff;
   --btn-border-radius: 5px;
 }
@@ -51,4 +53,92 @@ body {
 
 .icon i {
   font-size: 2em;
+}
+
+/*************************** Main/Dashboard Styles *****************************/
+
+.main {
+  padding: 2.5em 2em;
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 100px;
+  gap: 0.8em;
+}
+
+.dashboard-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  border-radius: 5px;
+}
+
+.dashboard-item p:first-child {
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
+.calorie-limit {
+  background-color: var(--color-dashboard-bg1);
+  grid-column: 1 / 4;
+}
+
+.gain-loss {
+  background-color: var(--color-dashboard-bg3);
+  grid-column: 4 / 7;
+}
+
+.calorie-limit,
+.gain-loss {
+  color: #fff;
+}
+
+.calories-consumed,
+.calories-burned,
+.calories-remaining {
+  background-color: var(--color-dashboard-bg2);
+}
+
+.calories-consumed {
+  grid-column: 1 / 3;
+}
+.calories-burned {
+  grid-column: 3 / 5;
+}
+.calories-remaining {
+  grid-column: 5 / 7;
+}
+
+/******************************* Media Queries *******************************/
+
+@media (max-width: 600px) {
+  /* .calorie-limit {
+    grid-column: 1 / 4;
+  }
+  .gain-loss {
+    grid-column: 1 / 4;
+  } */
+  .calories-consumed {
+    grid-column: 1 / 4;
+  }
+  .calories-burned {
+    grid-column: 4 / 7;
+  }
+  .calories-remaining {
+    grid-column: 1 / 7;
+  }
+}
+
+@media (max-width: 400px) {
+  .calorie-limit,
+  .gain-loss,
+  .calorie-limit,
+  .calories-burned,
+  .calories-consumed {
+    grid-column: 1 / 7;
+  }
 }
