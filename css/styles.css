@@ -147,10 +147,13 @@ body {
 .meal-workout-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
 }
 
-/* Meal Styles */
-section.meal {
+/* Meal/Workout Styles */
+
+section.meal,
+section.workout {
   display: grid;
   gap: 1em;
 }
@@ -163,24 +166,24 @@ section.meal {
   border-radius: var(--input-border-radius);
 }
 
-:is(.add-meal-form-container form input, .filter-container input):focus {
+:is(
+    .add-meal-form-container form input,
+    .add-workout-form-container form input,
+    .filter-container input
+  ):focus {
   outline: var(--input-outline);
   border: none;
 }
 
-.filter-container input,
-.add-meal-form-container form input {
-  box-sizing: border-box;
-}
-
-.meal-header-container {
+.meal-header-container,
+.workout-header-container {
   display: flex;
   align-items: center;
   gap: 0.5em;
   height: 60px;
 }
 
-.meal-header-container button {
+:is(.meal-header-container, .workout-header-container) button {
   margin-left: auto;
   background-color: var(--color-meal);
   border: none;
@@ -193,7 +196,15 @@ section.meal {
   background-color: var(--color-meal-light);
 }
 
-.meal-header-container::before {
+.workout-header-container button {
+  background-color: var(--color-workout);
+}
+
+.workout-header-container button:hover {
+  background-color: var(--color-workout-light);
+}
+
+:is(.meal-header-container, .workout-header-container)::before {
   content: '';
   display: inline-block;
   align-self: stretch;
@@ -201,26 +212,31 @@ section.meal {
   background-color: var(--color-meal);
 }
 
-.add-meal-form-container {
+.workout-header-container::before {
+  background-color: var(--color-workout);
+}
+
+.add-meal-form-container,
+.add-workout-form-container {
   background-color: var(--color-form-bg);
   padding: 1em;
   border-radius: 3px;
   height: fit-content;
 }
 
-.add-meal-form-container form {
+:is(.add-meal-form-container, .add-workout-form-container) form {
   display: grid;
   gap: 0.5em;
 }
 
-.add-meal-form-container form input {
+:is(.add-meal-form-container, .add-workout-form-container) form input {
   height: 30px;
   text-indent: 0.3em;
   border: var(--input-border);
   border-radius: var(--input-border-radius);
 }
 
-.add-meal-form-container form button {
+:is(.add-meal-form-container, .add-workout-form-container) form button {
   justify-self: self-start;
   background-color: var(--color-meal);
   border: none;
@@ -229,18 +245,20 @@ section.meal {
   padding: 0.6em;
 }
 
-.add-meal-form-container form button:hover {
+:is(.add-meal-form-container, .add-workout-form-container) form button:hover {
   background-color: var(--color-meal-light);
 }
 
-.meal-list {
+.meal-list,
+.workout-list {
   list-style-type: none;
   display: grid;
   grid-auto-rows: 60px;
   gap: 0.5em;
 }
 
-.meal-item {
+.meal-item,
+.workout-item {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border: var(--list-item-border);
@@ -249,7 +267,7 @@ section.meal {
   padding-inline: 1em;
 }
 
-.meal-item .calorie {
+:is(.meal-item, .workout-item) .calorie {
   justify-self: center;
   background-color: #599f3d;
   color: #fff;
@@ -257,7 +275,12 @@ section.meal {
   border-radius: 5px;
 }
 
-.meal-item .meal-item-remove-btn {
+.workout-item .calorie {
+  background-color: #f99c4f;
+}
+
+.meal-item .meal-item-remove-btn,
+.workout-item .workout-item-remove-btn {
   justify-self: end;
   background-color: red;
   border: none;
@@ -282,6 +305,9 @@ section.meal {
   }
   .calories-remaining {
     grid-column: 1 / 7;
+  }
+  .meal-workout-container {
+    grid-template-columns: 1fr;
   }
 }
 

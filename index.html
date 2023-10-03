@@ -94,7 +94,45 @@
             </ul>
           </div>
         </section>
-        <section class="workout"></section>
+        <section class="workout">
+          <div class="filter-container">
+            <input type="text" name="filter" placeholder="Filter Workout..." />
+          </div>
+          <div class="workout-header-container">
+            <h1>Workouts</h1>
+            <button><i class="fas fa-solid fa-plus"></i> Add Workout</button>
+          </div>
+          <div class="add-workout-form-container">
+            <form>
+              <input type="text" name="meal" placeholder="Enter Workout" />
+              <input
+                type="number"
+                name="calories"
+                placeholder="Enter Calories"
+                min="0"
+              />
+              <button type="submit">Add Workout Item</button>
+            </form>
+          </div>
+          <div class="workout-list-container">
+            <ul class="workout-list">
+              <li class="workout-item">
+                <p class="workout">Pushups</p>
+                <p class="calorie">500</p>
+                <button class="workout-item-remove-btn">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </li>
+              <li class="workout-item">
+                <p class="workout">Pushups</p>
+                <p class="calorie">700</p>
+                <button class="workout-item-remove-btn">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </section>
       </div>
     </main>
   </body>
