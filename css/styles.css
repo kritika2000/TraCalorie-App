@@ -5,6 +5,8 @@
   --color-dashboard-bg2: #e9ecef;
   --color-dashboard-bg3: #599f3d;
   --btn-border: 1px solid #fff;
+  --color-progress-bar: #e9ecef;
+  --color-bar-progress: #599f3d;
   --btn-border-radius: 5px;
 }
 
@@ -59,6 +61,8 @@ body {
 
 .main {
   padding: 2.5em 2em;
+  display: grid;
+  gap: 2.5em;
 }
 
 .dashboard-container {
@@ -113,7 +117,22 @@ body {
   grid-column: 5 / 7;
 }
 
-/******************************* Media Queries *******************************/
+/************************** Progress Bar Styles ************************/
+
+.progress-bar-container {
+  height: 0.6em;
+  background-color: var(--color-progress-bar);
+  border-radius: 5px;
+}
+
+.bar-progress {
+  width: 10%;
+  height: inherit;
+  background-color: var(--color-bar-progress);
+  border-radius: 5px;
+}
+
+/*************************** Media Queries ***************************/
 
 @media (max-width: 600px) {
   .calories-consumed {
