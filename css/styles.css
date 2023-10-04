@@ -3,6 +3,7 @@
   --color-secondary: #fd7e14;
   --color-dashboard-bg1: #212529;
   --color-dashboard-bg2: #e9ecef;
+  --color-dashboard-bg2: #f3f3f3;
   --color-dashboard-bg3: #599f3d;
   --color-form-bg: #e9ecef;
   --color-meal: #599f3d;
@@ -13,9 +14,11 @@
   --btn-border-radius: 5px;
   --color-progress-bar: #e9ecef;
   --color-bar-progress: #599f3d;
+  --color-dialog-bg: #e9ecef;
   --input-border: 1px solid #e4e5e6;
   --input-border-radius: 4px;
   --input-outline: 2px solid #b9e3a5;
+  --input-outline-error: 2px solid red;
   --list-item-border: 1px solid #e4e5e6;
   --list-item-border-radius: 3px;
 }
@@ -69,8 +72,12 @@ body {
 
 /*************************** Main/Dashboard Styles *****************************/
 
+#root {
+  display: grid;
+}
+
 .main {
-  padding: 2.5em 2em;
+  margin: 2.5em 2em;
   display: grid;
   gap: 2.5em;
 }
@@ -126,6 +133,10 @@ body {
 .calories-remaining {
   grid-column: 5 / 7;
 }
+.calories-remaining.danger {
+  background-color: red;
+  color: #fff;
+}
 
 /************************** Progress Bar Styles ************************/
 
@@ -136,10 +147,14 @@ body {
 }
 
 .bar-progress {
-  width: 10%;
+  width: 0%;
   height: inherit;
-  background-color: var(--color-bar-progress);
+  background-color: red;
   border-radius: 5px;
+}
+
+.bar-progress.success {
+  background-color: var(--color-bar-progress);
 }
 
 /*************************** Meal Workout Styles ***************************/
@@ -154,7 +169,8 @@ body {
 
 section.meal,
 section.workout {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 1em;
 }
 
@@ -166,12 +182,13 @@ section.workout {
   border-radius: var(--input-border-radius);
 }
 
-:is(
-    .add-meal-form-container form input,
-    .add-workout-form-container form input,
-    .filter-container input
-  ):focus {
+:is(.meal-form input, .workout-form input, .filter-container input):focus {
   outline: var(--input-outline);
+  border: none;
+}
+
+:is(.meal-form, .workout-form) input.error {
+  outline: var(--input-outline-error);
   border: none;
 }
 
@@ -216,27 +233,28 @@ section.workout {
   background-color: var(--color-workout);
 }
 
-.add-meal-form-container,
-.add-workout-form-container {
-  background-color: var(--color-form-bg);
+.meal-form,
+.workout-form {
+  display: grid;
+  gap: 0.5em;
   padding: 1em;
+  background-color: var(--color-form-bg);
   border-radius: 3px;
   height: fit-content;
 }
 
-:is(.add-meal-form-container, .add-workout-form-container) form {
-  display: grid;
-  gap: 0.5em;
+:is(.meal-form, .workout-form).hide {
+  display: none;
 }
 
-:is(.add-meal-form-container, .add-workout-form-container) form input {
+:is(.meal-form, .workout-form) input {
   height: 30px;
   text-indent: 0.3em;
   border: var(--input-border);
   border-radius: var(--input-border-radius);
 }
 
-:is(.add-meal-form-container, .add-workout-form-container) form button {
+:is(.meal-form, .workout-form) button {
   justify-self: self-start;
   background-color: var(--color-meal);
   border: none;
@@ -245,8 +263,16 @@ section.workout {
   padding: 0.6em;
 }
 
-:is(.add-meal-form-container, .add-workout-form-container) form button:hover {
+.workout-form button {
+  background-color: var(--color-workout);
+}
+
+.meal-form button:hover {
   background-color: var(--color-meal-light);
+}
+
+.workout-form button:hover {
+  background-color: var(--color-workout-light);
 }
 
 .meal-list,
@@ -269,14 +295,14 @@ section.workout {
 
 :is(.meal-item, .workout-item) .calorie {
   justify-self: center;
-  background-color: #599f3d;
+  background-color: var(--color-meal);
   color: #fff;
   padding: 0.5em 0.8em;
   border-radius: 5px;
 }
 
 .workout-item .calorie {
-  background-color: #f99c4f;
+  background-color: var(--color-workout);
 }
 
 .meal-item .meal-item-remove-btn,
@@ -292,7 +318,57 @@ section.workout {
   border-radius: 5px;
 }
 
-/* Workout Styles */
+/***************** Set Daily Limit Dialog Styles ******************/
+.set-daily-limit-dialog {
+  position: absolute;
+  top: 100px;
+  height: 100vh;
+  width: 100vw;
+  justify-content: center;
+  transition: top 2s;
+  display: none;
+}
+
+.set-daily-limit-dialog form {
+  background-color: var(--color-dialog-bg);
+  height: fit-content;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 2em 1em;
+  border-radius: 3px;
+}
+
+.set-daily-limit-dialog form input {
+  height: 35px;
+  text-indent: 0.3em;
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+}
+
+.set-daily-limit-dialog form input:focus {
+  outline: var(--input-outline);
+  border: none;
+}
+
+.set-daily-limit-dialog form button {
+  align-self: flex-start;
+  padding: 0.5em;
+  background-color: #599f3d;
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+}
+
+.set-daily-limit-dialog form button:hover {
+  background-color: #73bc56;
+}
+
+.show {
+  display: flex;
+}
 
 /*************************** Media Queries ***************************/
 
