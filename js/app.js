@@ -1,26 +1,3 @@
-class AddItem {
-  constructor(type, name, calories, listElem) {
-    // Creating Elements
-    const listItem = document.createElement('li');
-    const itemName = document.createElement('p');
-    const itemCalories = document.createElement('p');
-    const button = document.createElement('button');
-    // Setting Attributes
-    listItem.setAttribute('class', `${type}-item`);
-    itemName.setAttribute('class', `${type}`);
-    itemCalories.setAttribute('class', `calorie`);
-    button.setAttribute('class', `${type}-item-remove-btn`);
-    itemName.textContent = name;
-    itemCalories.textContent = calories;
-    // Append Elements
-    button.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
-    listItem.appendChild(itemName);
-    listItem.appendChild(itemCalories);
-    listItem.appendChild(button);
-    listElem.appendChild(listItem);
-  }
-}
-
 class CalorieTracker {
   constructor() {
     this._calorieLimit = 2000;
@@ -99,11 +76,31 @@ class CalorieTracker {
   }
   _displayNewMeal(meal) {
     const mealList = document.querySelector('.meal-list');
-    new AddItem('meal', meal.name, meal.calories, mealList);
+    this._addNewItem('meal', meal.name, meal.calories, mealList);
   }
   _displayNewWorkout(workout) {
     const workoutList = document.querySelector('.workout-list');
-    new AddItem('workout', workout.name, workout.calories, workoutList);
+    this._addNewItem('workout', workout.name, workout.calories, workoutList);
+  }
+  _addNewItem(type, name, calories, listElem) {
+    // Creating Elements
+    const listItem = document.createElement('li');
+    const itemName = document.createElement('p');
+    const itemCalories = document.createElement('p');
+    const button = document.createElement('button');
+    // Setting Attributes
+    listItem.setAttribute('class', `${type}-item`);
+    itemName.setAttribute('class', `${type}`);
+    itemCalories.setAttribute('class', `calorie`);
+    button.setAttribute('class', `${type}-item-remove-btn`);
+    itemName.textContent = name;
+    itemCalories.textContent = calories;
+    // Append Elements
+    button.innerHTML = `<i class="fa-solid fa-xmark"></i>`;
+    listItem.appendChild(itemName);
+    listItem.appendChild(itemCalories);
+    listItem.appendChild(button);
+    listElem.appendChild(listItem);
   }
   _render() {
     this._displayCaloriesTotal();
