@@ -326,7 +326,7 @@ section.workout {
   width: 100vw;
   justify-content: center;
   transition: top 2s;
-  display: none;
+  display: flex;
 }
 
 .set-daily-limit-dialog form {
@@ -366,8 +366,8 @@ section.workout {
   background-color: #73bc56;
 }
 
-.show {
-  display: flex;
+.set-daily-limit-dialog.hide {
+  display: none;
 }
 
 /*************************** Media Queries ***************************/

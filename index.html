@@ -58,7 +58,12 @@
         <div class="meal-workout-container">
           <section class="meal">
             <div class="filter-container">
-              <input type="text" name="filter" placeholder="Filter Meals..." />
+              <input
+                id="filter-meals"
+                type="text"
+                name="filter"
+                placeholder="Filter Meals..."
+              />
             </div>
             <div class="meal-header-container">
               <h1>Meal / Food Items</h1>
@@ -66,7 +71,7 @@
                 <i class="fas fa-solid fa-plus"></i> Add Meal
               </button>
             </div>
-            <form class="meal-form">
+            <form class="meal-form hide">
               <input type="text" name="meal" placeholder="Enter Meal or Item" />
               <input
                 type="number"
@@ -83,6 +88,7 @@
           <section class="workout">
             <div class="filter-container">
               <input
+                id="filter-workouts"
                 type="text"
                 name="filter"
                 placeholder="Filter Workout..."
@@ -95,7 +101,7 @@
               </button>
             </div>
 
-            <form class="workout-form">
+            <form class="workout-form hide">
               <input type="text" name="meal" placeholder="Enter Workout" />
               <input
                 type="number"
@@ -113,16 +119,21 @@
         </div>
       </main>
     </div>
-    <div class="set-daily-limit-dialog">
+    <div class="set-daily-limit-dialog hide">
       <form>
         <input
+          id="daily-limit"
           type="number"
           placeholder="Enter Daily Limit"
           name="daily-limit"
         />
         <div class="btn-container">
-          <button type="submit">Set Limit</button>
-          <button type="submit" style="background-color: red">
+          <button id="set-limit-btn" type="submit">Set Limit</button>
+          <button
+            id="close-dialog-btn"
+            type="submit"
+            style="background-color: red"
+          >
             Close Dialog
           </button>
         </div>
