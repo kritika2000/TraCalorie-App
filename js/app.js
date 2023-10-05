@@ -13,7 +13,6 @@ class CalorieTracker {
     this._displayAllMeals();
     this._displayAllWorkouts();
   }
-
   // Public Methods/API
   addMeal(meal) {
     this._meals.push(meal);
@@ -58,17 +57,14 @@ class CalorieTracker {
   }
   reset() {
     this._calorieLimit = 2000;
-    Storage.setCalorieLimit(2000);
     this._totalCalories = 0;
-    Storage.setTotalCalories(0);
     this._meals = [];
-    Storage.setMeals([]);
     this._workouts = [];
-    Storage.setWorkouts([]);
     this._displayCaloriesLimit();
     this._render();
     document.querySelector('.meal-list').innerHTML = '';
     document.querySelector('.workout-list').innerHTML = '';
+    Storage.clearAll();
   }
   setLimit(limit) {
     this._calorieLimit = limit;
@@ -337,6 +333,9 @@ class Storage {
     let workouts = JSON.parse(localStorage.getItem('workouts'));
     workouts = workouts.filter((w) => w.id !== workout.id);
     this.setWorkouts(workouts);
+  }
+  static clearAll() {
+    localStorage.clear();
   }
 }
 
